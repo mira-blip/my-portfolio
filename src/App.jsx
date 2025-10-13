@@ -106,6 +106,8 @@ const Portfolio = () => {
     return () => window.removeEventListener('keydown', handleKeyDown);
   }, []);
 
+  const BASE_URL = import.meta.env.BASE_URL;
+
   const technicalProjects = [
     {
       id: 'tuuri',
@@ -114,9 +116,9 @@ const Portfolio = () => {
       description: 'Your description here about making Mongolian history accessible through interactive visualization.',
       tags: ['Web Design', 'UI/UX', 'Interactive'],
       images: [
-        '/images/tuuri-1.png',
-        '/images/tuuri-2.png',
-        '/images/tuuri-3.png'
+        `${BASE_URL}images/tuuri-1.png`,
+        `${BASE_URL}images/tuuri-2.png`,
+        `${BASE_URL}images/tuuri-3.png`
       ]
     },
     {
@@ -126,8 +128,8 @@ const Portfolio = () => {
       description: 'Your description here about designing accessible climate education experiences.',
       tags: ['Web Design', 'Education', 'Accessibility'],
       images: [
-        '/images/climatescience-1.png',
-        '/images/climatescience-2.png'
+        `${BASE_URL}images/climatescience-1.png`,
+        `${BASE_URL}images/climatescience-2.png`
       ]
     },
     {
@@ -137,8 +139,8 @@ const Portfolio = () => {
       description: 'Your description here about the mobile experience and user flow.',
       tags: ['Mobile Design', 'UI/UX', 'App'],
       images: [
-        '/images/uuy-1.png',
-        '/images/uuy-2.png'
+        `${BASE_URL}images/uuy-1.png`,
+        `${BASE_URL}images/uuy-2.png`
       ]
     }
   ];
@@ -150,12 +152,12 @@ const Portfolio = () => {
       subtitle: 'Climate Education Program',
       description: 'Your description about empowering youth climate educators.',
       images: [
-        '/images/junior-rangers-1.png',
-        '/images/junior-rangers-2.png',
-        '/images/junior-rangers-3.png',
-        '/images/junior-rangers-4.png',
-        '/images/junior-rangers-5.png',
-        '/images/junior-rangers-6.png'
+        `${BASE_URL}images/junior-rangers-1.png`,
+        `${BASE_URL}images/junior-rangers-2.png`,
+        `${BASE_URL}images/junior-rangers-3.png`,
+        `${BASE_URL}images/junior-rangers-4.png`,
+        `${BASE_URL}images/junior-rangers-5.png`,
+        `${BASE_URL}images/junior-rangers-6.png`
       ]
     },
     {
@@ -164,28 +166,28 @@ const Portfolio = () => {
       subtitle: 'Essay Writing Program',
       description: 'Your description about making essay writing mentorship accessible.',
       images: [
-        '/images/nomadvocate-1.png',
-        '/images/nomadvocate-2.png',
-        '/images/nomadvocate-3.png',
-        '/images/nomadvocate-4.png',
-        '/images/nomadvocate-6.png',
-        '/images/nomadvocate-7.png'
+        `${BASE_URL}images/nomadvocate-1.png`,
+        `${BASE_URL}images/nomadvocate-2.png`,
+        `${BASE_URL}images/nomadvocate-3.png`,
+        `${BASE_URL}images/nomadvocate-4.png`,
+        `${BASE_URL}images/nomadvocate-6.png`,
+        `${BASE_URL}images/nomadvocate-7.png`
       ]
     }
   ];
 
   const designWorks = [
-    { id: 'design-1', image: '/images/design-1.jpg', title: 'Design Work 1' },
-    { id: 'design-2', image: '/images/design-3.png', title: 'Design Work 2' },
-    { id: 'design-3', image: '/images/design-2.png', title: 'Design Work 3' },
-    { id: 'design-4', image: '/images/design-10.jpg', title: 'Design Work 4' },
-    { id: 'design-5', image: '/images/design-4.png', title: 'Design Work 5' },
-    { id: 'design-6', image: '/images/design-7.png', title: 'Design Work 6' },
-    { id: 'design-7', image: '/images/design-8.png', title: 'Design Work 7' },
-    { id: 'design-8', image: '/images/design-12.png', title: 'Design Work 8' },
-    { id: 'design-9', image: '/images/design-5.png', title: 'Design Work 9' },
-    { id: 'design-10', image: '/images/design-11.jpg', title: 'Design Work 10' },
-    { id: 'design-11', image: '/images/design-9.png', title: 'Design Work 11' }
+    { id: 'design-1', image: `${BASE_URL}images/design-1.jpg`, title: 'Design Work 1' },
+    { id: 'design-2', image: `${BASE_URL}images/design-3.png`, title: 'Design Work 2' },
+    { id: 'design-3', image: `${BASE_URL}images/design-2.png`, title: 'Design Work 3' },
+    { id: 'design-4', image: `${BASE_URL}images/design-10.jpg`, title: 'Design Work 4' },
+    { id: 'design-5', image: `${BASE_URL}images/design-4.png`, title: 'Design Work 5' },
+    { id: 'design-6', image: `${BASE_URL}images/design-7.png`, title: 'Design Work 6' },
+    { id: 'design-7', image: `${BASE_URL}images/design-8.png`, title: 'Design Work 7' },
+    { id: 'design-8', image: `${BASE_URL}images/design-12.png`, title: 'Design Work 8' },
+    { id: 'design-9', image: `${BASE_URL}images/design-5.png`, title: 'Design Work 9' },
+    { id: 'design-10', image: `${BASE_URL}images/design-11.jpg`, title: 'Design Work 10' },
+    { id: 'design-11', image: `${BASE_URL}images/design-9.png`, title: 'Design Work 11' }
   ];
 
   const nextSlide = (projectId, maxSlides) => {
@@ -244,36 +246,44 @@ const Portfolio = () => {
         />
       ))}
 
-      {/* Top Navigation - Modern */}
-      <nav className="fixed top-8 right-8 z-50">
-        <div className="hidden md:flex gap-8">
-          {navItems.map(item => (
-            <a
-              key={item.href}
-              href={item.href}
-              className="text-gray-700 hover:text-red-600 transition-colors text-sm font-medium tracking-wide uppercase"
-            >
-              {item.label}
-            </a>
-          ))}
-        </div>
+      {/* Sticky Top Navigation */}
+      <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
+          {/* Name/Logo */}
+          <a href="#" className="text-xl font-bold bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">
+            Tamiraa Sanjaajav
+          </a>
 
-        {/* Mobile menu button */}
-        <button
-          className="md:hidden bg-white p-3 shadow-lg border border-gray-200 text-gray-900 hover:border-red-500 transition-colors"
-          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        >
-          {mobileMenuOpen ? <X /> : <Menu />}
-        </button>
-
-        {/* Mobile menu dropdown */}
-        {mobileMenuOpen && (
-          <div className="md:hidden absolute top-full right-0 mt-2 bg-white shadow-xl border border-gray-200 p-4 min-w-[200px]">
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex gap-8">
             {navItems.map(item => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block py-3 text-gray-700 hover:text-red-600 transition-colors font-medium"
+                className="text-gray-700 hover:text-red-600 transition-colors text-sm font-medium tracking-wide uppercase"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+
+          {/* Mobile menu button */}
+          <button
+            className="md:hidden bg-white p-2 text-gray-900 hover:text-red-600 transition-colors"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
+            {mobileMenuOpen ? <X /> : <Menu />}
+          </button>
+        </div>
+
+        {/* Mobile menu dropdown */}
+        {mobileMenuOpen && (
+          <div className="md:hidden bg-white border-t border-gray-200">
+            {navItems.map(item => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block py-3 px-6 text-gray-700 hover:text-red-600 hover:bg-gray-50 transition-colors font-medium"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {item.label}
@@ -338,7 +348,7 @@ const Portfolio = () => {
             </div>
             <div className="pt-2">
               <a
-                href="/resume.pdf"
+                href={`${BASE_URL}resume.pdf`}
                 download
                 className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-teal-600 text-white font-medium rounded-lg hover:from-red-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl hover:scale-105"
               >
@@ -350,7 +360,7 @@ const Portfolio = () => {
           {/* Bottom Right - Profile Image */}
           <div className="hidden md:block w-48 h-48 lg:w-64 lg:h-64 rounded-2xl overflow-hidden shadow-2xl ring-2 ring-red-500/20 hover:ring-red-500/40 transition-all">
             <img
-              src="/profile.jpg"
+              src={`${BASE_URL}profile.jpg`}
               alt="Tamiraa Sanjaajav"
               className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
             />
