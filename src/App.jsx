@@ -71,7 +71,7 @@ const Portfolio = () => {
   useEffect(() => {
     let animationId;
     let scrollPosition = 0;
-    const scrollSpeed = 0.5; // Slow scroll speed
+    const scrollSpeed = 0.5;
     let isAnimating = false;
 
     const animateScroll = () => {
@@ -80,7 +80,7 @@ const Portfolio = () => {
         const maxScroll = designGalleryRef.current.scrollHeight / 2;
 
         if (scrollPosition >= maxScroll) {
-          scrollPosition = 0; // Reset for infinite loop
+          scrollPosition = 0;
         }
 
         designGalleryRef.current.style.transform = `translateY(-${scrollPosition}px)`;
@@ -88,7 +88,6 @@ const Portfolio = () => {
       }
     };
 
-    // Start animation when design section is in view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -120,21 +119,17 @@ const Portfolio = () => {
     };
   }, []);
 
-  // Keyboard navigation - Space/Enter to go to next section
+  // Keyboard navigation
   useEffect(() => {
     const sections = ['#work', '#projects', '#design', '#about', '#contact'];
 
     const handleKeyDown = (e) => {
-      // Only trigger if Space or Enter is pressed and not in an input/textarea
       if ((e.key === ' ' || e.key === 'Enter') &&
           !['INPUT', 'TEXTAREA', 'BUTTON', 'A'].includes(e.target.tagName)) {
         e.preventDefault();
 
-        // Get all section elements
         const sectionElements = sections.map(selector => document.querySelector(selector)).filter(Boolean);
-
-        // Find current section based on scroll position
-        const scrollPosition = window.scrollY + 100; // Small offset from top
+        const scrollPosition = window.scrollY + 100;
         let currentSectionIndex = -1;
 
         for (let i = 0; i < sectionElements.length; i++) {
@@ -145,17 +140,14 @@ const Portfolio = () => {
           }
         }
 
-        // If we're past all sections, we're at the last one
         if (currentSectionIndex === -1) {
           currentSectionIndex = sectionElements.length - 1;
         }
 
-        // Move to next section
         const nextIndex = currentSectionIndex + 1;
         if (nextIndex < sectionElements.length) {
           sectionElements[nextIndex].scrollIntoView({ behavior: 'smooth', block: 'start' });
         } else {
-          // If at the last section, scroll to top
           window.scrollTo({ top: 0, behavior: 'smooth' });
         }
       }
@@ -172,7 +164,7 @@ const Portfolio = () => {
       id: 'tuuri',
       title: 'Tuuri',
       subtitle: 'Interactive History Learning Platform',
-      description: 'Built an interactive web application for learning Mongolian history, featuring a dynamic 3D/2D spinning wheel using ThreeJS and PixiJS. Recognized at Nest Hackathon for its innovative approach to making history education engaging and accessible.',
+      description: 'Developed a web application for learning Mongolian history through interactive 3D/2D visualizations built with ThreeJS and PixiJS. Collaborated with history professors to create an engaging educational tool that maintained public access for multiple years. Recognized at Nest Hackathon for its innovative approach to making history education more accessible.',
       tags: ['ThreeJS', 'PixiJS', 'Web Development', 'Education'],
       images: [
         `${BASE_URL}images/tuuri-1.png`,
@@ -184,7 +176,7 @@ const Portfolio = () => {
       id: 'climatescience',
       title: 'ClimateScience',
       subtitle: 'Climate Education Platform',
-      description: 'Designed user-centered educational experiences for climate literacy, creating accessible interfaces that make complex climate science concepts approachable for diverse audiences.',
+      description: 'Designed user-centered educational experiences for climate literacy, creating accessible interfaces that make complex climate science concepts approachable for diverse audiences. Focused on inclusive design principles and clear visual communication.',
       tags: ['UI/UX Design', 'Web Design', 'Education', 'Accessibility'],
       images: [
         `${BASE_URL}images/climatescience-1.png`,
@@ -195,7 +187,7 @@ const Portfolio = () => {
       id: 'uuy',
       title: 'UUY',
       subtitle: 'Mobile Pick-Up Application',
-      description: 'Designed an intuitive mobile application focused on seamless user experience and efficient pick-up logistics, with attention to clean interface design and user flow.',
+      description: 'Designed an intuitive mobile application focused on seamless user experience and efficient logistics. Emphasized clean interface design, thoughtful user flows, and mobile-first interaction patterns.',
       tags: ['Mobile Design', 'UI/UX', 'Product Design'],
       images: [
         `${BASE_URL}images/uuy-1.png`,
@@ -209,7 +201,7 @@ const Portfolio = () => {
       id: 'junior-rangers',
       title: 'Junior Rangers Mongolia',
       subtitle: 'Youth Climate Education Initiative',
-      description: 'Organized the first Junior Rangers program in Mongolia, recognized with the UNA Star Member Award. Led this climate education initiative by coordinating climate experts and educators, securing funding, and guiding the program from conception through graduation.',
+      description: 'Led operational execution of an environmental education program in partnership with the Australian Embassy, National Garden Park, and National Botanic Garden. Coordinated logistics, developed curriculum materials, and managed relationships across partner organizations. Recognized with the UNA Rising Star Award for program delivery and stakeholder coordination.',
       images: [
         `${BASE_URL}images/junior-rangers-1.png`,
         `${BASE_URL}images/junior-rangers-2.png`,
@@ -222,8 +214,8 @@ const Portfolio = () => {
     {
       id: 'nomadvocate',
       title: 'NomAdvocate',
-      subtitle: 'Essay Writing Program for Underprivileged Youth',
-      description: 'Founded and managed a community-driven essay writing program providing accessible pathways for underprivileged youth to develop critical writing and communication skills. Secured funding and organized comprehensive sessions, office tours, and a graduation ceremony.',
+      subtitle: 'Essay Writing Program for Youth Leaders',
+      description: 'Developed and managed a community-driven essay writing program designed to strengthen critical thinking and advocacy skills for youth leaders. Secured funding, coordinated partnerships with Amnesty International and American Corner, and facilitated comprehensive program delivery including classroom sessions and graduation ceremony.',
       images: [
         `${BASE_URL}images/nomadvocate-1.png`,
         `${BASE_URL}images/nomadvocate-2.png`,
@@ -306,12 +298,10 @@ const Portfolio = () => {
       {/* Fixed Top Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-[9998] bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          {/* Name/Logo */}
           <a href="#home" className="text-xl font-bold bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
             Tamiraa Sanjaajav
           </a>
 
-          {/* Desktop Navigation */}
           <div className="hidden md:flex gap-8">
             {navItems.map(item => (
               <a
@@ -324,7 +314,6 @@ const Portfolio = () => {
             ))}
           </div>
 
-          {/* Mobile menu button */}
           <button
             className="md:hidden bg-white p-2 text-gray-900 hover:text-red-600 transition-colors"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
@@ -333,7 +322,6 @@ const Portfolio = () => {
           </button>
         </div>
 
-        {/* Mobile menu dropdown */}
         {mobileMenuOpen && (
           <div className="md:hidden bg-white border-t border-gray-200">
             {navItems.map(item => (
@@ -350,7 +338,7 @@ const Portfolio = () => {
         )}
       </nav>
 
-      {/* Vibrant background gradient with parallax effect - Apple style */}
+      {/* Vibrant background gradient with parallax effect */}
       <div className="fixed inset-0 pointer-events-none overflow-hidden z-0">
         <div
           className="absolute -top-48 -right-48 w-[600px] h-[600px] rounded-full transition-transform duration-500 ease-out"
@@ -378,19 +366,17 @@ const Portfolio = () => {
         />
       </div>
 
-      {/* Hero Section - Modern Layout */}
+      {/* Hero Section */}
       <section id="home" ref={heroRef} className="relative min-h-screen flex flex-col justify-between px-8 md:px-16 py-16 overflow-hidden z-10">
-        {/* Top Spacer */}
         <div className="h-20 md:h-32"></div>
 
-        {/* Center - Main Statement */}
         <div className="flex-1 flex items-center justify-center relative z-10 pb-12 md:pb-20">
           <div className="max-w-4xl px-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-center mb-8 tracking-tight animate-text-reveal hover:animate-text-wave">
               <span className="text-gray-900" style={{ textShadow: '0 0 8px white, 0 0 8px white, 0 0 8px white' }}>Aspiring leader in the </span><span className="bg-gradient-to-r from-red-600 via-orange-600 to-teal-600 bg-clip-text text-transparent font-extrabold">tech space</span>
             </h2>
             <p className="text-lg md:text-xl lg:text-2xl text-center text-gray-900 font-normal max-w-3xl mx-auto leading-relaxed animate-text-reveal" style={{ animationDelay: '0.8s', textShadow: '0 0 8px white, 0 0 8px white, 0 0 8px white' }}>
-              Computer Science and Economics student building meaningful digital experiences that bridge technology, education, and social impact
+              Computer Science and Economics student building meaningful digital experiences that bridge technology, design, and social impact
             </p>
             <p className="text-base md:text-lg text-center font-medium mt-6 text-gray-700 animate-text-reveal" style={{ animationDelay: '1.6s', textShadow: '0 0 8px white, 0 0 8px white' }}>
               📍 Wesleyan University, USA
@@ -398,9 +384,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Bottom - Contact & Image */}
         <div className="relative z-10 flex flex-col md:flex-row justify-between items-center md:items-end gap-8 md:gap-0">
-          {/* Bottom Left - Contact Info & Resume */}
           <div className="space-y-3 text-sm md:text-base animate-pop-in w-full md:w-auto flex flex-col items-center md:items-start" style={{ animationDelay: '2.2s' }}>
             <div className="flex items-center gap-3 group">
               <Mail className="w-4 h-4 text-red-600 flex-shrink-0" />
@@ -425,7 +409,6 @@ const Portfolio = () => {
             </div>
           </div>
 
-          {/* Bottom Right - Profile Image */}
           <div className="w-40 h-40 md:w-48 md:h-48 lg:w-64 lg:h-64 rounded-2xl overflow-hidden shadow-2xl ring-2 ring-red-500/20 hover:ring-red-500/40 transition-all animate-pop-in" style={{ animationDelay: '2.2s' }}>
             <img
               src={`${BASE_URL}profile.jpg`}
@@ -435,7 +418,6 @@ const Portfolio = () => {
           </div>
         </div>
 
-        {/* Scroll indicator */}
         <a href="#work" className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform animate-pop-in" style={{ animationDelay: '2.6s' }}>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center hover:border-red-600 transition-colors">
             <div className="w-1 h-3 bg-gradient-to-b from-red-600 to-teal-600 rounded-full mt-2 animate-bounce" />
@@ -566,12 +548,11 @@ const Portfolio = () => {
             Design & <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Marketing</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-16 fade-in-section max-w-2xl">
-            Visual storytelling for education and social impact initiatives
+            Visual storytelling and brand work for education and social impact initiatives
           </p>
 
           <div className="relative overflow-hidden max-h-[800px] fade-in-section">
             <div ref={designGalleryRef} className="columns-2 md:columns-3 gap-4 will-change-transform">
-              {/* Render items twice for seamless loop */}
               {[...designWorks, ...designWorks].map((work, i) => (
                 <div
                   key={`${work.id}-${i}`}
@@ -589,7 +570,6 @@ const Portfolio = () => {
                 </div>
               ))}
             </div>
-            {/* Gradient fade at top and bottom */}
             <div className="absolute top-0 left-0 right-0 h-20 bg-gradient-to-b from-white to-transparent pointer-events-none z-10" />
             <div className="absolute bottom-0 left-0 right-0 h-20 bg-gradient-to-t from-white to-transparent pointer-events-none z-10" />
           </div>
@@ -603,16 +583,18 @@ const Portfolio = () => {
             About <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Me</span>
           </h2>
           <div className="relative bg-white rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden">
-            {/* Decorative gradient blobs */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-500/5 to-transparent rounded-full blur-3xl -z-0" />
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-teal-500/5 to-transparent rounded-full blur-3xl -z-0" />
 
             <div className="relative z-10">
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                I'm currently studying Computer Science and Economics with a minor in Global Engagement at Wesleyan University. My work spans product management, software development, and design—building projects that focus on education, community building, and social impact.
+                I'm currently studying Computer Science and Economics with a minor in Global Engagement at Wesleyan University. My work spans product management, software development, and design—with a focus on projects in education, community building, and social impact.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
-                I'm passionate about inclusive, efficient, and fun design ✨ whether that's creating user interfaces, managing cross-functional teams, or building processes from the ground up. I believe the best solutions come from understanding people's needs and making complex things accessible and engaging.
+                I'm passionate about creating inclusive, efficient, and engaging experiences ✨ whether that's designing user interfaces, coordinating cross-functional teams, or building technical solutions from the ground up. I believe the best work comes from understanding people's needs deeply and making complex ideas accessible.
+              </p>
+              <p className="text-lg md:text-xl text-gray-700 leading-relaxed mb-6">
+                When I'm not coding or managing projects, I'm exploring how technology can serve communities and create meaningful change. I bring perspectives from growing up in Mongolia and studying in the U.S., which shapes how I think about building for diverse audiences.
               </p>
               <p className="text-lg md:text-xl text-gray-700 leading-relaxed">
                 Originally from Ulaanbaatar, Mongolia 🇲🇳
@@ -629,7 +611,7 @@ const Portfolio = () => {
             Let's <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Connect</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-12 font-medium">
-            Interested in working together? Reach out!
+            Interested in collaborating or just want to chat? I'd love to hear from you!
           </p>
 
           <div className="flex gap-6 justify-center">
