@@ -262,10 +262,10 @@ const Portfolio = () => {
   ];
 
   return (
-    <div ref={containerRef} className="min-h-screen bg-slate-50 text-gray-900 relative overflow-x-hidden cursor-none">
+    <div ref={containerRef} className="min-h-screen bg-slate-50 text-gray-900 relative overflow-x-hidden md:cursor-none">
       {/* Big fun cursor */}
       <div
-        className="pointer-events-none fixed w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-teal-400 transition-all duration-200 ease-out"
+        className="hidden md:block pointer-events-none fixed w-12 h-12 rounded-full bg-gradient-to-br from-red-400 to-teal-400 transition-all duration-200 ease-out"
         style={{
           left: cursorPos.x,
           top: cursorPos.y,
@@ -282,7 +282,7 @@ const Portfolio = () => {
       {trails.map((trail, i) => (
         <div
           key={trail.id}
-          className="pointer-events-none fixed rounded-full bg-gradient-to-br from-red-300 to-teal-300 transition-opacity duration-500"
+          className="hidden md:block pointer-events-none fixed rounded-full bg-gradient-to-br from-red-300 to-teal-300 transition-opacity duration-500"
           style={{
             left: trail.x,
             top: trail.y,
@@ -298,7 +298,7 @@ const Portfolio = () => {
       {/* Fixed Top Navigation */}
       <nav className="fixed top-0 left-0 right-0 z-[9998] bg-white/80 backdrop-blur-md border-b border-gray-200 shadow-sm">
         <div className="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
-          <a href="#home" className="text-xl font-bold bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
+          <a href="#home" className="text-xl font-bold bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent hover:opacity-80 transition-opacity">
             Tamiraa Sanjaajav
           </a>
 
@@ -373,12 +373,12 @@ const Portfolio = () => {
         <div className="flex-1 flex items-center justify-center relative z-10 pb-12 md:pb-20">
           <div className="max-w-4xl px-4">
             <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight text-center mb-8 tracking-tight animate-text-reveal hover:animate-text-wave">
-              <span className="text-gray-900" style={{ textShadow: '0 0 8px white, 0 0 8px white, 0 0 8px white' }}>Aspiring leader in the </span><span className="bg-gradient-to-r from-red-600 via-orange-600 to-teal-600 bg-clip-text text-transparent font-extrabold">tech space</span>
+              <span className="text-gray-900" >Aspiring leader in the </span><span className="bg-gradient-to-r from-red-600 via-orange-600 to-teal-500 bg-clip-text text-transparent font-extrabold">tech space</span>
             </h2>
-            <p className="text-lg md:text-xl lg:text-2xl text-center text-gray-900 font-normal max-w-3xl mx-auto leading-relaxed animate-text-reveal" style={{ animationDelay: '0.8s', textShadow: '0 0 8px white, 0 0 8px white, 0 0 8px white' }}>
+            <p className="text-lg md:text-xl lg:text-2xl text-center text-gray-900 font-normal max-w-3xl mx-auto leading-relaxed animate-text-reveal" style={{ animationDelay: '0.8s'}}>
               Computer Science and Economics student building meaningful digital experiences that bridge technology, design, and social impact
             </p>
-            <p className="text-base md:text-lg text-center font-medium mt-6 text-gray-700 animate-text-reveal" style={{ animationDelay: '1.6s', textShadow: '0 0 8px white, 0 0 8px white' }}>
+            <p className="text-base md:text-lg text-center font-medium mt-6 text-gray-700 animate-text-reveal" style={{ animationDelay: '1.6s'}}>
               📍 Wesleyan University, USA
             </p>
           </div>
@@ -402,7 +402,7 @@ const Portfolio = () => {
               <a
                 href={`${BASE_URL}resume.pdf`}
                 download
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-teal-600 text-white font-medium rounded-lg hover:from-red-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 text-sm md:text-base"
+                className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-red-600 to-teal-500 text-white font-medium rounded-lg hover:from-red-700 hover:to-teal-700 transition-all shadow-lg hover:shadow-xl hover:scale-105 text-sm md:text-base"
               >
                 Download Resume
               </a>
@@ -420,7 +420,7 @@ const Portfolio = () => {
 
         <a href="#work" className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform animate-pop-in" style={{ animationDelay: '2.6s' }}>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center hover:border-red-600 transition-colors">
-            <div className="w-1 h-3 bg-gradient-to-b from-red-600 to-teal-600 rounded-full mt-2 animate-bounce" />
+            <div className="w-1 h-3 bg-gradient-to-b from-red-600 to-teal-500 rounded-full mt-2 animate-bounce" />
           </div>
         </a>
       </section>
@@ -429,7 +429,7 @@ const Portfolio = () => {
       <section id="work" className="py-24 px-6 relative bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-16 fade-in-section text-gray-900 tracking-tight">
-            Featured <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Work</span>
+            Featured <span className="bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent">Work</span>
           </h2>
           
           <div className="space-y-24">
@@ -466,7 +466,7 @@ const Portfolio = () => {
                                 key={i}
                                 className={`h-2 rounded-full transition-all ${
                                   i === (activeSlide[project.id] || 0)
-                                    ? 'bg-gradient-to-r from-red-600 to-teal-600 w-8'
+                                    ? 'bg-gradient-to-r from-red-600 to-teal-500 w-8'
                                     : 'bg-white/70 w-2'
                                 }`}
                               />
@@ -487,7 +487,7 @@ const Portfolio = () => {
                     {project.tags.map(tag => (
                       <span
                         key={tag}
-                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-600 hover:text-white transition-all font-medium border border-gray-200"
+                        className="px-4 py-2 bg-gray-100 text-gray-700 rounded-full text-sm hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-500 hover:text-white transition-all font-medium border border-gray-200"
                       >
                         {tag}
                       </span>
@@ -507,7 +507,7 @@ const Portfolio = () => {
       <section id="projects" className="py-24 px-6 bg-slate-50 relative">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-16 fade-in-section text-gray-900 tracking-tight">
-            Project <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Management</span>
+            Project <span className="bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent">Management</span>
           </h2>
 
           <div className="space-y-24">
@@ -545,7 +545,7 @@ const Portfolio = () => {
       <section id="design" className="py-24 px-6 relative bg-white">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-4xl md:text-5xl font-bold mb-4 fade-in-section text-gray-900 tracking-tight">
-            Design & <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Marketing</span>
+            Design & <span className="bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent">Marketing</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-16 fade-in-section max-w-2xl">
             Visual storytelling and brand work for education and social impact initiatives
@@ -580,7 +580,7 @@ const Portfolio = () => {
       <section id="about" className="py-24 px-6 bg-slate-50 relative">
         <div className="max-w-4xl mx-auto fade-in-section">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 tracking-tight">
-            About <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Me</span>
+            About <span className="bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent">Me</span>
           </h2>
           <div className="relative bg-white rounded-2xl p-8 md:p-12 shadow-2xl overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-red-500/5 to-transparent rounded-full blur-3xl -z-0" />
@@ -608,7 +608,7 @@ const Portfolio = () => {
       <section id="contact" className="py-24 px-6 relative bg-white">
         <div className="max-w-4xl mx-auto text-center fade-in-section">
           <h2 className="text-4xl md:text-5xl font-bold mb-8 text-gray-900 tracking-tight">
-            Let's <span className="bg-gradient-to-r from-red-600 to-teal-600 bg-clip-text text-transparent">Connect</span>
+            Let's <span className="bg-gradient-to-r from-red-600 to-teal-500 bg-clip-text text-transparent">Connect</span>
           </h2>
           <p className="text-lg md:text-xl text-gray-600 mb-12 font-medium">
             Interested in collaborating or just want to chat? I'd love to hear from you!
@@ -617,7 +617,7 @@ const Portfolio = () => {
           <div className="flex gap-6 justify-center">
             <a
               href="mailto:tsanjaajav@wesleyan.edu"
-              className="p-5 bg-gray-100 rounded-full hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-600 hover:text-white transition-all hover:scale-110 shadow-lg hover:shadow-xl ring-2 ring-gray-200"
+              className="p-5 bg-gray-100 rounded-full hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-500 hover:text-white transition-all hover:scale-110 shadow-lg hover:shadow-xl ring-2 ring-gray-200"
             >
               <Mail className="w-7 h-7" />
             </a>
@@ -625,7 +625,7 @@ const Portfolio = () => {
               href="https://www.linkedin.com/in/tami-san/"
               target="_blank"
               rel="noopener noreferrer"
-              className="p-5 bg-gray-100 rounded-full hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-600 hover:text-white transition-all hover:scale-110 shadow-lg hover:shadow-xl ring-2 ring-gray-200"
+              className="p-5 bg-gray-100 rounded-full hover:bg-gradient-to-r hover:from-red-600 hover:to-teal-500 hover:text-white transition-all hover:scale-110 shadow-lg hover:shadow-xl ring-2 ring-gray-200"
             >
               <Linkedin className="w-7 h-7" />
             </a>
