@@ -236,7 +236,12 @@ const Portfolio = () => {
     { id: 'design-6', image: `${BASE_URL}images/design-7.png`, title: 'Design Work 6' },
     { id: 'design-9', image: `${BASE_URL}images/design-5.png`, title: 'Design Work 9' },
     { id: 'design-10', image: `${BASE_URL}images/design-11.jpg`, title: 'Design Work 10' },
-    { id: 'design-11', image: `${BASE_URL}images/design-9.png`, title: 'Design Work 11' }
+    { id: 'design-11', image: `${BASE_URL}images/design-9.png`, title: 'Design Work 11' },
+    { id: 'design-12', image: `${BASE_URL}images/design-12.png`, title: 'Design Work 12' },
+    { id: 'design-13', image: `${BASE_URL}images/design-13.jpg`, title: 'Design Work 13' },
+    { id: 'design-14', image: `${BASE_URL}images/design-14.jpg`, title: 'Design Work 14' },
+    { id: 'design-15', image: `${BASE_URL}images/design-15.png`, title: 'Design Work 15' },
+    { id: 'design-16', image: `${BASE_URL}images/design-16.jpg`, title: 'Design Work 16' }
   ];
 
   const nextSlide = (projectId, maxSlides) => {
