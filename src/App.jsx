@@ -430,7 +430,7 @@ const Portfolio = () => {
           </div>
         </div>
 
-        <a href="#work" className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform animate-pop-in" style={{ animationDelay: '2s' }}>
+        <a href="#projects" className="absolute bottom-12 left-1/2 -translate-x-1/2 cursor-pointer hover:scale-110 transition-transform animate-pop-in" style={{ animationDelay: '2s' }}>
           <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center hover:border-brand-600 transition-colors">
             <div className="w-1 h-3 bg-gradient-to-b from-brand-600 to-accent-500 rounded-full mt-2 animate-bounce" />
           </div>
